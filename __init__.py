@@ -9,6 +9,7 @@ from PyQt5.QtWidgets import QPushButton, QWidget, QComboBox,QTableWidgetItem, QP
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 import timeit
 
+# API키를 저장한 텍스트 파일 불러오기
 with open("api.txt") as f:
     lines = f.readlines()
     api_key = lines[0].strip()
@@ -29,8 +30,6 @@ binance = ccxt.binance(config={
 global order
 global order_num_list
 global position
-# global balance
-# global ticker
 order_num_list = []
 g_tick_data = 'ADA/USD' #현재 호가창 및 거래를 할 코인종류 전역변수
 
@@ -55,23 +54,7 @@ class BinanceFunction():
         # binance.create_order(코인 종류, 시장가or지정가, 포지션, 수량, 가격)
         order_num_list.append(order)
         print('매수전송', order)
-        # 매수방법2
-        # 2
-        # symbol = 'TRX/USD'
-        # type = 'limit' # or 'market', other types aren't unified yet
-        # side = 'sell'
-        # amount = 1 # your amount
-        # price = 54.321 # your price
-        # # overrides
-        # params = {
-        # 'stopPrice': 123.45, # your stop price
-        # 'type': 'stopLimit',
-        # }
-        # order = binance.create_order(
-        # symbol, type, side, amount, price, params)
-        # binance.cancel_order()
-
-        #매도
+       
 
     #매도
     def sell_short(self):
@@ -193,65 +176,31 @@ class OrderbookWidget(QWidget,BinanceFunction):
                                      "}")
 
 
-        #----------------매수, 매도 버튼 이벤트-----
-        self.buy_present.setStyleSheet("background-color : #58FA82;") ##00FF00  "color: #FAFAFA;"
-        self.buy_present.clicked.connect(self.buy_long)
-
-        self.sell_present.setStyleSheet("background-color : #ff5522   ;")
-        self.sell_present.clicked.connect(self.sell_short)
-
-        # #지정가
-        # self.buy_set.setStyleSheet("background-color : #58FA82;")
-        # self.sell_set.setStyleSheet("background-color : #ff5522   ;")
-
-        #----------------취소 버튼 이벤트-----
-
-        # self.cancel_lifo.setStyleSheet("background-color : #ff8c00  ;")
-        # self.cancel_lifo.clicked.connect(self.balance
-
-        self.cancel_all.setStyleSheet("background-color : #ff7f50  ;")
-        self.cancel_all.clicked.connect(self.cancel_all_order)
 
 
 
     # ----------------- 호가창 데이터 ------------------
         for i in range(10):
-            # 매도호가
-            #3열데이터
+            #  매도호가 : 2열데이터
             item_2 = QTableWidgetItem(str(""))
             item_2.setTextAlignment(Qt.AlignCenter | Qt.AlignVCenter)
             self.tableAsks.setItem(i, 2, item_2)
 
-            # 2열데이터
+            # 매도 물량 : 1열데이터
             item_1 = QTableWidgetItem(str(""))
             item_1.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
             self.tableAsks.setItem(i, 1, item_1)
-            # # 3열데이터
-            # item_3 = QProgressBar(self.tableAsks)
-            # item_3.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            # item_3.setStyleSheet("""
-            #     QProgressBar {background-color : rgba(0, 0, 0, 0%);border : 1}
-            #     QProgressBar::Chunk {background-color : rgba(255, 85, 34, 30%);border : 1}
-            # """)
-            # self.tableAsks.setCellWidget(i, 1, item_3)
 
-            # 매수호가
-            # 3열데이터
+
+            # 매수호가 : 2열데이터
             item_2 = QTableWidgetItem(str(""))
             item_2.setTextAlignment(Qt.AlignCenter | Qt.AlignVCenter)
             self.tableBids.setItem(i, 2, item_2)
-            # 4열데이터
+            # 매수물량 : 3열데이터
             item_3 = QTableWidgetItem(str(""))
             item_3.setTextAlignment(Qt.AlignLeft | Qt.AlignVCenter)
             self.tableBids.setItem(i, 3, item_3)
-            # # 3열데이터
-            # item_2 = QProgressBar(self.tableBids)
-            # item_2.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-            # item_2.setStyleSheet("""
-            #    QProgressBar {background-color : rgba(0, 0, 0, 0%);border : 1}
-            #    QProgressBar::Chunk {background-color : rgba(88, 250, 130, 30%);border : 1}
-            # """)
-            # self.tableBids.setCellWidget(i, 2, item_2)
+
 
         self.ow = OrderbookWorker(self.ticker)
         self.ow.dataSent.connect(self.updateData)
@@ -287,34 +236,7 @@ class OrderbookWidget(QWidget,BinanceFunction):
             item_2.setText(f"{v[0]:,}")
             item_3 = self.tableBids.item(i, 3)
             item_3.setText(f"{v[1]:,}")
-            # if i ==49:
-            #     break
-            # item_2 = self.tableBids.cellWidget(i, 2)
-            # item_2.setRange(0, maxTradingValue)
-            # item_2.setFormat(f"{tradingValues[i]:,}")
-            # item_2.setValue(tradingValues[i])
 
-        # balance = binance.fetch_balance()
-        # ticker = binance.fetch_ticker(g_tick_data)
-        # free = str(balance[g_tick_data.split('/')[0]]['free'])
-        # used = str(balance[g_tick_data.split('/')[0]]['used'])
-        # total = str(balance[g_tick_data.split('/')[0]]['total'])
-        # coin_usd = str(int(balance[g_tick_data.split('/')[0]]['total']) * round(float(ticker['close']), 2))
-        #
-        # self.tableBalance.setItem(0, 0, QTableWidgetItem(free))
-        # self.tableBalance.setItem(0, 1, QTableWidgetItem(used))
-        # self.tableBalance.setItem(0, 2, QTableWidgetItem(total))
-        # self.tableBalance.setItem(0, 3, QTableWidgetItem(coin_usd))
-        # bitem_1 = self.tableBalance.item(0, 0)
-        # bitem_1.setText(f"{balance[g_tick_data.split('/')[0]]['free']:,}")
-        # bitem_2 = self.tableBalance.item(0, 1)
-        # bitem_2.setText(f"{balance[g_tick_data.split('/')[0]]['used']:,}")
-        # bitem_3 = self.tableBalance.item(0, 2)
-        # bitem_3.setText(f"{balance[g_tick_data.split('/')[0]]['total']:,}")
-        # bitem_4 = self.tableBalance.item(0, 3)
-        # bitem_4.setText(f"{int(balance[g_tick_data.split('/')[0]]['total']) * round(float(ticker['close']), 2):,}")
-        # bitem_5 = self.tableBalance.item(i, 2)
-        # bitem_5.setText(f"{v[0]:,}")
 
     def updataBalance(self, balance, ticker):
         free = str(balance[g_tick_data.split('/')[0]]['free'])
@@ -329,13 +251,6 @@ class OrderbookWidget(QWidget,BinanceFunction):
 
     def closeEvent(self, event):
         self.ow.close()
-
-# data = binance.fetch_order_book('TRX/USD')
-# for i in range(29):
-#     temp = data[i]
-#     data = temp
-# # data  = pybithumb.get_orderbook(self.ticker, limit=10)
-# time.sleep(0.05)
 
 
 
