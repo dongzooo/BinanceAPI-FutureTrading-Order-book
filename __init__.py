@@ -51,7 +51,6 @@ class BinanceFunction():
         global position
         position = self.present_price()
         order = binance.create_order(g_tick_data, "limit", "buy", 1, price=position, params={})  #(코인 종류, 시장가or지정가, 포지션, 수량, 가격)
-        # binance.create_order(코인 종류, 시장가or지정가, 포지션, 수량, 가격)
         order_num_list.append(order)
         print('매수전송', order)
        
@@ -66,8 +65,6 @@ class BinanceFunction():
 
     #주문 취소
     def cancel_lifo_order(self):
-        # print(order['info']['orderId'])
-        # order_id = order['info']['orderId']
         temp = order_num_list[(len(order_num_list))]
         order_id = temp['info']['orderId']
         order_cancel = binance.cancel_order(order_id, g_tick_data)
@@ -85,8 +82,6 @@ class BinanceFunction():
     #잔고확인
     def balance(self):
         balance = binance.fetch_balance()
-        # print(balance.keys())
-        # tmp = g_tick_data.split('/')[0]
         return balance[g_tick_data.split('/')[0]]
 
 
@@ -104,14 +99,10 @@ class OrderbookWorker(QThread):
         while self.alive:
             print('통신코인',g_tick_data)
             start_time = timeit.default_timer()
-            # balance = binance.fetch_balance()
-            # ticker = binance.fetch_ticker(g_tick_data)
             data = binance.fetch_order_book(g_tick_data, limit=10)  #limit 변경시 2가지 변경, 1.pyqt사이즈 2.호가창 리셋for문
-            # print('123',data)
             terminate_time = timeit.default_timer()
             print("%f초 걸렸습니다." % (terminate_time - start_time))
 
-            # data  = pybithumb.get_orderbook(self.ticker, limit=10)
             time.sleep(0.00001)
             self.dataSent.emit(data)
 
@@ -139,7 +130,7 @@ class OrderbookWorker(QThread):
 class OrderbookWidget(QWidget,BinanceFunction):
     def __init__(self, parent=None, ticker="TRX/USD"):
         super().__init__(parent)
-        uic.loadUi("untitled20.ui", self) #C:\ProgramData\Anaconda3\Lib\site-packages\PySide2
+        uic.loadUi("main.ui", self)
         self.ticker = ticker
         #item
         #코인 종류 고르는 매서드
