@@ -1,5 +1,5 @@
-##  바이낸스 코인선물 트레이딩 
-### binanceFutureTradingProgram
+##  바이낸스 코인선물 트레이딩 (binanceFutureTradingProgram)
+
 
 ### UI Interface
 ----
