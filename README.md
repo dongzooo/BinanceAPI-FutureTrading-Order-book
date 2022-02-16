@@ -1,4 +1,4 @@
-##  바이낸스 코인선물 트레이딩 (Binance-Future Trading Program)
+##  바이낸스 코인선물 트레이딩 (Binance API Future Trading Program)
 
 
 ### UI Interface
