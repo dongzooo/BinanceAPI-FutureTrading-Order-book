@@ -200,11 +200,8 @@ class OrderbookWidget(QWidget,BinanceFunction):
 
 
     def updateData(self, data):
-        # tradingValues = []
-        # for v in data['bids']:
-        #     tradingValues.append(int(v[0] * v[1]))
-        # maxTradingValue = max(tradingValues)
-        global g_tick_data
+
+        global g_tick_data #전역변수로 설정하여 유동적으로 다른코인 호가창으로 변경가능
         g_tick_data = str(self.coin_box.currentText())
 
         for i, v in enumerate(data['asks'][::-1]): #매도 i= 0 매도 v= [2.13441, 311.0]
@@ -213,13 +210,6 @@ class OrderbookWidget(QWidget,BinanceFunction):
             item_2.setText(f"{v[0]:,}")
             item_1 = self.tableAsks.item(i, 1)
             item_1.setText(f"{v[1]:,}")
-            # item_2 = self.tableAsks.cellWidget(i, 2)
-            # item_2.setRange(0, maxTradingValue)
-            # item_2.setFormat(f"{tradingValues[i]:,}")
-            # item_2.setValue(tradingValues[i])
-            # if i ==49:
-            #     print('통신끝')
-            #     break
 
         for i, v in enumerate(data['bids']):
             # print('매수 i=', i, '매수 v=', v)
