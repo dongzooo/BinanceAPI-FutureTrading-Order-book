@@ -22,7 +22,7 @@
 
 
 ### 4. Request
-- binance 사이트에서 Future API 등록
+- binance 사이트에서 Future API 등록("api.txt" 파일 생성 후 저장)
 - Python3, PYQT , QTdesigner
 
 
