@@ -21,7 +21,7 @@
 - 자동매매를 만들고 싶다면 위 메서드를 활용하면 가능
 
 
-### 4. Request
+### 4. Requirements
 - binance 사이트에서 Future API 등록("api.txt" 파일 생성 후 저장)
 - Python3, PYQT , QTdesigner
 
