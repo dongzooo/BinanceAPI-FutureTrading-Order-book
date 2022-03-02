@@ -130,7 +130,7 @@ class OrderbookWorker(QThread):
 class OrderbookWidget(QWidget,BinanceFunction):
     def __init__(self, parent=None, ticker="TRX/USD"):
         super().__init__(parent)
-        uic.loadUi("main.ui", self)
+        uic.loadUi("mainUI.ui", self)
         self.ticker = ticker
         #item
         #코인 종류 고르는 매서드
