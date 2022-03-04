@@ -205,14 +205,12 @@ class OrderbookWidget(QWidget,BinanceFunction):
         g_tick_data = str(self.coin_box.currentText())
 
         for i, v in enumerate(data['asks'][::-1]): #매도 i= 0 매도 v= [2.13441, 311.0]
-            # print('매도 i=',i,'매도 v=',v)
             item_2 = self.tableAsks.item(i, 2)
             item_2.setText(f"{v[0]:,}")
             item_1 = self.tableAsks.item(i, 1)
             item_1.setText(f"{v[1]:,}")
 
         for i, v in enumerate(data['bids']):
-            # print('매수 i=', i, '매수 v=', v)
             item_2 = self.tableBids.item(i, 2)
             item_2.setText(f"{v[0]:,}")
             item_3 = self.tableBids.item(i, 3)
