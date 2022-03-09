@@ -14,7 +14,7 @@
 ----
 
 ### 3. Demo VIdeo
- - UI밑에 검은 창은 바이낸스 
+ - UI밑에 검은 창은 바이낸스 창
 
 https://user-images.githubusercontent.com/40832965/157466507-d5f65489-a3d6-42a5-9f29-00caeca9eb17.mp4
 
