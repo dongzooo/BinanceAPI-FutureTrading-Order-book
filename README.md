@@ -13,8 +13,13 @@
 ![KakaoTalk_20220209_235029338](https://user-images.githubusercontent.com/40832965/153558802-e102a735-e89e-4f79-bb4d-29ef26cee503.png)
 ----
 
+### 3. Demo VIdeo
 
-### 3. Overview
+
+https://user-images.githubusercontent.com/40832965/157466507-d5f65489-a3d6-42a5-9f29-00caeca9eb17.mp4
+
+
+### 4. Overview
 - 코인선물 설정 바에서 코인이름 선택하면 해당 코인 호가창출력
 - 매수 버튼클릭 시 코인 1개 LONG 포지션
 - 매도 버튼 클릭 시 코인 1개 SHORT 포지션
@@ -22,7 +27,7 @@
 - 자동매매를 만들고 싶다면 위 메서드를 활용하면 가능
 
 
-### 4. Requirements
+### 5. Requirements
 - binance 사이트에서 Future API 등록("api.txt" 파일 생성 후 저장)
 - Python3, PYQT , QTdesigner
 
