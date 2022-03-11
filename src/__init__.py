@@ -166,11 +166,19 @@ class OrderbookWidget(QWidget,BinanceFunction):
                                      "\n"
                                      "}")
 
+         '''매수, 매도 버튼 이벤트'''
+        self.buy_present.setStyleSheet("background-color : #58FA82;") ##00FF00  "color: #FAFAFA;"
+        self.buy_present.clicked.connect(self.buy_long)
 
+        self.sell_present.setStyleSheet("background-color : #ff5522;")
+        self.sell_present.clicked.connect(self.sell_short)
 
+        '''취소 버튼 이벤트'''
 
+        self.cancel_all.setStyleSheet("background-color : #ff7f50  ;")
+        self.cancel_all.clicked.connect(self.cancel_all_order)
 
-    # ----------------- 호가창 데이터 ------------------
+    # ----------------- 호가창 데이터 공간 세팅 ------------------
         for i in range(10):
             #  매도호가 : 2열데이터
             item_2 = QTableWidgetItem(str(""))
