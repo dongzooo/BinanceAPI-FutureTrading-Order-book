@@ -33,7 +33,7 @@ global position
 order_num_list = []
 g_tick_data = 'ADA/USD' #현재 호가창 및 거래를 할 코인종류 전역변수
 
-# 1 세팅
+# 1 바이낸스 API 통신 세팅
 markets = binance.load_markets()
 binance.verbose = True
 
