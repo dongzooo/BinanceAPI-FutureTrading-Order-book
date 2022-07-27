@@ -22,7 +22,6 @@ binance = ccxt.binance(config={
     'enableRateLimit': True,
     'options': {
         'defaultType': 'delivery'
-        # 'fetchMarkets' : 'inverse'
     }
 })
 
