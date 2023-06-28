@@ -1,7 +1,7 @@
 import ccxt
 import time
 import datetime
-import keyboard
+# import keyboard
 import sys
 from PyQt5 import uic
 from PyQt5.QtGui import QIcon, QPalette, QColor
@@ -165,7 +165,7 @@ class OrderbookWidget(QWidget,BinanceFunction):
                                      "\n"
                                      "}")
 
-         '''매수, 매도 버튼 이벤트'''
+        '''매수, 매도 버튼 이벤트'''
         self.buy_present.setStyleSheet("background-color : #58FA82;") ##00FF00  "color: #FAFAFA;"
         self.buy_present.clicked.connect(self.buy_long)
 
