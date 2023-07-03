@@ -1,5 +1,6 @@
 ##  바이낸스 코인선물 트레이딩 호가창(Binance API Future Trading Program)
 
+## 자세한 설명 -> [http://quantpro.co.kr/](https://quantpro.co.kr/category/%ec%9e%90%eb%8f%99%eb%a7%a4%eb%a7%a4-%ea%b0%9c%eb%b0%9c/)
 바이낸스 선물 거래와 증권사 파생상품 거래를 경험해 하면서 거래량의 큰 차이가 안나는 데, 바이낸스 선물의 체결속도는 상대적으로 느리다고 인지됐다. 더 좋은 체결속도를 위해 API를 사용한 매매프로그램을 만들어야 겠다고 인지했다.
 
 ### 1. Purpose
